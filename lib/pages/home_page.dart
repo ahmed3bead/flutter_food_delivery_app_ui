@@ -143,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                   TextSpan(
                     text: "Ahmed Ebead",
                     style: TextStyle(
-                      color: AppColors.greenColor,
+                      color: Colors.green,
                       fontWeight: FontWeight.bold,
                       height: 1.5,
                     ),
@@ -217,40 +217,45 @@ class _HomePageState extends State<HomePage> {
               bottomLeft: Radius.circular(12),
             ),
           ),
-          child: Row(
-            children: <Widget>[
-              Image(
-                image: AssetImage("assets/${foodList[index].imgPath}"),
-                width: 100,
-              ),
-              SizedBox(width: 16),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    "${foodList[index].name}",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  SizedBox(height: 4),
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        "\$ ${foodList[index].price.toInt()}",
-                        style: TextStyle(
-                            color: AppColors.redColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(width: 16),
-                      Text(
-                        "(${foodList[index].weight.toInt()} gm Weight)",
-                        style: TextStyle(fontSize: 12),
-                      ),
-                    ],
-                  ),
-                ],
-              )
-            ],
+          child: GestureDetector(
+            onTap: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (_)=>DetailPage(foodList[index])));
+            },
+            child: Row(
+              children: <Widget>[
+                Image(
+                  image: AssetImage("assets/${foodList[index].imgPath}"),
+                  width: 100,
+                ),
+                SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "${foodList[index].name}",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    SizedBox(height: 4),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          "\$ ${foodList[index].price.toInt()}",
+                          style: TextStyle(
+                              color: AppColors.redColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(width: 16),
+                        Text(
+                          "(${foodList[index].weight.toInt()} gm Weight)",
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         );
       },
@@ -335,7 +340,7 @@ class _HomePageState extends State<HomePage> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: (){
-                          Navigator.of(context).push(MaterialPageRoute(builder: (_)=>DetailPage()));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (_)=>DetailPage(foodList[index])));
                         },
                         child: Padding(
                           padding: EdgeInsets.only(right: 40),
@@ -344,10 +349,13 @@ class _HomePageState extends State<HomePage> {
                               _buildBackGroung(index),
                               Align(
                                 child: Transform.rotate(
-                                  child: Image(
-                                    image: AssetImage(
-                                        "assets/${foodList[index].imgPath}"),
-                                    width: 175,
+                                  child: Hero(
+                                    tag: "image${foodList[index].imgPath}",
+                                    child: Image(
+                                      image: AssetImage(
+                                          "assets/${foodList[index].imgPath}"),
+                                      width: 175,
+                                    ),
                                   ),
                                   angle: math.pi / 3.5,
                                 ),
