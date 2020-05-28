@@ -1,17 +1,10 @@
 # flutter food delivery app ui
 
 
-flutter-food-delivery-app-ui 
+This is my first UI APP 
 
-## Getting Started
+![flutter_food_delivery_app_ui](https://user-images.githubusercontent.com/60138292/83158334-f45e8e00-a104-11ea-8a15-9eabe2e826a8.gif)
 
-This project is a starting point for a Flutter application.
+## Youtube ink 
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://www.youtube.com/watch?v=dsWzN2nzazA&t=21s
